@@ -1,13 +1,18 @@
 import React from "react"
+import { ThemeProvider, theme, CSSReset } from "@chakra-ui/react"
 import "../styles/globals.css"
 
-interface MyAppProps {
+interface AppProps {
   Component: React.ComponentType
   pageProps: any
 }
 
-function MyAppTest({ Component, pageProps }: MyAppProps) {
-  return <Component {...pageProps} />
+export default function App(props: AppProps) {
+  const { Component, pageProps } = props
+  return (
+    <ThemeProvider theme={theme}>
+      <CSSReset />
+      <Component {...pageProps} />
+    </ThemeProvider>
+  )
 }
-
-export default MyAppTest
